@@ -55,7 +55,7 @@ const HomePage = () => {
       <ParticlesComponent/>
 
 <motion.div
-          className=' w-full h-1/2 md:h-1/3 bottom-5   sm:bottom-0 md:bottom-32 lg:bottom-0  lg:w-[30rem] lg:h-full  lg:right-0  xl:right-64   absolute z-0 sm:z-10  '
+          className=' w-full h-1/2 md:h-1/3 bottom-5   sm:bottom-0 md:bottom-32 lg:bottom-0  lg:w-[30rem] lg:h-full  lg:right-0  2xl:right-64   absolute z-0 sm:z-10  '
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
