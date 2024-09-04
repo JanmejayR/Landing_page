@@ -2,32 +2,185 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Oswald:wght@200..700&display=swap');
+
+/* Additional global styles */
+.baskervville-sc-regular {
+  font-family: 'Baskervville SC', serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.carme-regular {
+  font-family: 'Carme', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.oswald-title {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700; 
+    font-style: normal;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+.link-effect {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
   }
+  
+  .link-effect > span {
+    display: block;
+    padding: 10px 20px;
+    font-size: 20px;
+    /* color: #fff; */
+    text-transform: uppercase;
+  }
+  
+  .link-effect:before, .link-effect:after, .link-effect > span:before, .link-effect > span:after {
+    content: "";
+    background: #7b2cbf; 
+    position: absolute;
+    transition: all 0.15s ease-in-out; /* Changed to 0.15s for double speed */
+  }
+  
+  .link-effect:before, .link-effect:after {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .link-effect:before {
+    width: 100%;
+    height: 1px;
+    transform: translateX(-100%);
+    transition-delay: 0.45s; /* Changed to 0.45s for double speed */
+  }
+  
+  .link-effect:after {
+    width: 1px;
+    height: 100%;
+    transform: translateY(100%);
+    transition-delay: 0.3s; /* Changed to 0.3s for double speed */
+  }
+  
+  .link-effect > span:before, .link-effect > span:after {
+    top: 0;
+    left: 0;
+  }
+  
+  .link-effect > span:before {
+    width: 100%;
+    height: 1px;
+    transform: translateX(100%);
+    transition-delay: 0.15s; /* Changed to 0.15s for double speed */
+  }
+  
+  .link-effect > span:after {
+    width: 1px;
+    height: 100%;
+    transform: translateY(-100%);
+    transition-delay: 0s;
+  }
+  
+  .link-effect:hover:before, .link-effect:hover:after, .link-effect:hover > span:before, .link-effect:hover > span:after {
+    transform: translate(0, 0);
+  }
+  
+  .link-effect:hover:before {
+    transition-delay: 0s;
+  }
+  
+  .link-effect:hover:after {
+    transition-delay: 0.15s; /* Changed to 0.15s for double speed */
+  }
+  
+  .link-effect:hover > span:before {
+    transition-delay: 0.3s; /* Changed to 0.3s for double speed */
+  }
+  
+  .link-effect:hover > span:after {
+    transition-delay: 0.45s; /* Changed to 0.45s for double speed */
+  }
+
+
+.link-effect:before, .link-effect:after, .link-effect > span:before, .link-effect > span:after {
+    content: "";
+    background: #7b2cbf; /* Increased opacity to make it brighter */
+    position: absolute;
+    transition: all 0.15s ease-in-out;
+  }
+  
+/* #B5FF7D */
+
+  .link-effect:hover > span {
+    color: #7b2cbf; 
+    background-color: #cfe0ea;
+  }
+
+
+
+  
+input[type = "checkbox"] {
+
+  display: none;
+  visibility: hidden;
+}
+
+.bar {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  width: 50px;
+  height: 40px;
+}
+
+.bar span {
+  position: absolute;
+  width: 45px;
+  height: 7px;
+  background: #f1faee;
+  border-radius: 100px;
+  display: inline-block;
+  transition: 0.3s ease;
+  left: 0;
+}
+
+.bar span.top {
+  top: 0;
+}
+
+.bar span.middle {
+  top: 17px;
+}
+
+.bar span.bottom {
+  bottom: 0;
+}
+
+input[type]:checked ~ span.top {
+  transform: rotate(45deg);
+  transform-origin: top left;
+  width: 48px;
+  left: 5px;
+}
+
+input[type]:checked ~ span.bottom {
+  transform: rotate(-45deg);
+  transform-origin: top left;
+  width: 48px;
+  bottom: -1px;
+  box-shadow: 0 0 10px #495057;
+}
+
+input[type]:checked ~ span.middle {
+  transform: translateX(-20px);
+  opacity: 0;
 }
